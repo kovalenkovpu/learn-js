@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+
+  "use strict";
+  
+    function extractCurrencyValue(str) {
+      let result = '',
+          index = str.indexOf('$');
+      
+      for (var i = 0; i < str.length; i++) {
+        if (i != index) result += str[i];
+      };
+      
+      return +result;
+    };
+    
+  debugger;  
+  extractCurrencyValue('$120');
+  
+  </script>
+
+</body>
+</html>

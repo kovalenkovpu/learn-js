@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+
+    function truncate(str, maxlength) {
+      var length = str.length,
+          str1;
+      
+      if (length > maxlength) {
+        str1 = str.slice(0, (maxlength - 1));
+        str1 += '…';
+      } else {
+        str1 = str;
+      }
+      
+      return str1;
+    };
+
+  </script>
+
+</body>
+</html>

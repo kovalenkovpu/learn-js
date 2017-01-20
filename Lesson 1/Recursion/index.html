@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Pavel Kovalenkov</title>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+    "use strict";
+    
+    //sum of n numbers
+    function sumTo(n) {
+      var result = n;
+      
+      if (n != 1) return result += sumTo(n - 1);
+      
+      return result;
+    };
+    
+    function sumToLoop(n) {
+      var result = 0;
+      
+      for (var i = 0; i <= n; i++) {
+        result += i;
+      };
+      
+      return result;
+    };
+    
+    function sumToProgression(n) {
+      var sum = sum = ((1 + n) / 2) * n;
+      
+      return sum;
+    }
+    
+    alert( sumTo(4) +', ' + sumTo(100) );
+    alert( sumToLoop(4) +', ' + sumToLoop(100) );
+    alert( sumToProgression(4) +', ' + sumToProgression(100) );
+      
+    </script>
+  </body>
+
+</html>
