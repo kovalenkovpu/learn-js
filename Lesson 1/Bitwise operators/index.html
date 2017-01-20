@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Pavel Kovalenkov</title>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+    "use strict";
+    
+    function isInteger(num) {
+      var integer = ~~num;
+      if (integer == num) return true;
+      return false;
+    };
+    
+    alert( isInteger(1) ); // true
+    alert( isInteger(1.5) ); // false
+    alert( isInteger(-0.5) ); // false
+    </script>
+  </body>
+
+</html>

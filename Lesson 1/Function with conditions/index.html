@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Pavel Kovalenkov</title>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+    "use strict";
+      
+      function checkAge(age) {
+        return (age > 18) ? alert('Доступ открыт!') : confirm('Родители разрешили?');
+      };
+      
+      
+      function checkAgeNew(age) {
+        return (age > 18) || confirm('Родители разрешили?');
+      };
+      
+      checkAgeNew(20);
+      checkAgeNew(10);
+      
+      
+      
+      //pow(x, n)
+      function pow() {
+        var x = 0,
+            n = 0,
+            result = 1;
+        
+        while (x == 0 || isNaN(x)) {
+          x = +prompt("Введите x:");
+        };
+        
+        while (n == 0 || isNaN(n)) {
+          n = +prompt("Введите n:");
+        };
+        
+        for (var i = 1; i <= n; i++) {
+          result *= x;
+        }
+        
+        return result;
+      };
+      
+      alert (pow() );
+      
+    </script>
+  </body>
+
+</html>

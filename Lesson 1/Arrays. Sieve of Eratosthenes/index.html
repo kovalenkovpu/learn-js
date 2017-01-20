@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Pavel Kovalenkov</title>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+    "use strict";
+    
+    //this algorithm finds all primes up to N starting with 2
+    
+    //creates an array with 2..n items
+    function createArr(last) {
+      var arr = [];
+      
+      for (var i = 0; i < (last - 1); i++) {
+        arr.push(i + 2);
+      }
+      
+      return arr;
+    };
+    
+    //change 101 if you need more primes
+    var arr = createArr(101);
+    
+    //finds primes in an arr
+    function sieve(arr) {
+      var p = 2,
+          primes = [];
+          
+      while ((p * p) < arr.length) {
+        
+        for (var i = (p - 1); i < arr.length; i++) {
+          if ((arr[i] % p) == 0) arr[i] = 0;
+        };
+        
+        for (var j = p; j < arr.length; j++) {
+          if (arr[j] != 0) {
+            p = arr[j];
+            break;
+          };
+        };
+      };
+      
+      for (var k = 0; k < arr.length; k++) {
+        if (arr[k] != 0) primes.push(arr[k]);
+      }
+      
+      return primes;
+    };
+    
+    //run the function
+    alert (arr + '\n\n' + sieve(arr) );
+      
+    </script>
+  </body>
+
+</html>

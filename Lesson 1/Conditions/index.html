@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Pavel Kovalenkov</title>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+    "use strict";
+    
+    function loginRequest() {
+      var name = prompt('Кто пришел?');
+      
+      if (name == undefined) {
+        alert('Вход отменен.');
+      } else if (name != 'Админ') {
+        alert('Я вас не знаю.');
+      } else {
+        var password = prompt('Пароль?');
+        
+        if (password == undefined) {
+          alert('Вход отменен.');
+        } else if (password == 'Черный властелин') {
+          alert('Добро пожаловать!');
+        } else {
+          alert('Пароль неверен.');
+        };
+      };
+    };
+    
+    //loginRequest();
+    
+    var result = 0,
+        a = 4,
+        b = 3;
+    
+    (a + b < 4) ? (result = 'Мало') : (result = 'Много');
+    
+    
+    var message;
+    var login = prompt('Логин?');
+
+    if (login == 'Вася') {
+      message = 'Привет';
+    } else if (login == 'Директор') {
+      message = 'Здравствуйте';
+    } else if (login == '') {
+      message = 'Нет логина';
+    } else {
+      message = '';
+    }
+    
+    (login == 'Вася') ? (message = 'Привет') :
+    (login == 'Директор') ? (message = 'Здравствуйте') :
+    (login == '') ? (message = 'Нет логина') : (message = '');
+    
+    alert(message);
+    
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Pavel Kovalenkov</title>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+    "use strict";
+      
+      //last item of the array
+      var goods = [1,2,3,4,5,6];
+      
+      function lastItem(arr) {
+        alert( arr[(arr.length - 1)] );
+      };
+      
+      lastItem(goods);
+      
+      
+      //insert new item into the array
+      goods.push('Компьютер');
+      
+      alert( goods );
+      
+      
+      //array creation
+      var styles = ['Джаз', 'Блюз'];
+      
+      styles.push('Рок-н-Ролл');
+      alert(styles);
+      
+      styles[(styles.length - 2)] = 'Классика';
+      alert(styles);
+      
+      styles.shift();
+      alert(styles);
+      
+      styles.unshift('Рэп','Регги');
+      alert(styles);
+      
+      
+      //random value out of array
+      var arr = ["Яблоко", "Апельсин", "Груша", "Лимон"],
+          rValue = arr.length;
+          
+      while (rValue > (arr.length - 1)) {
+        var rValue = Math.floor((Math.random() * 10), 0);
+      }
+      
+      alert('Номер элемента: ' + rValue + ', Элемент: ' + arr[(rValue - 1)]);
+      
+      
+      //calculator
+      var item = '',
+          arr = [],
+          sum = 0;
+      
+      do {
+        item = +prompt('Введите значение:');
+        arr.push(item);
+      } while (item != '' && item != undefined && !isNaN(item));
+      
+      arr.pop();
+      
+      for (var i=0; i < arr.length; i++) {
+        sum += arr[i];
+      };
+      
+      alert(arr + ', а сумма: ' + sum);
+      
+      
+      //search through an array
+      function find(arr, value) {
+        var arr1 = [];
+        
+        for (var i = 0; i < arr.length; i++) {
+          if (value === arr[i]) arr1.push(i);
+        };
+        
+        (arr1.length > 0) ? alert( arr1 ) : alert( -1 );
+      };
+      
+      var arr = ["test", 2, 1.5, 2, 2, false];
+      
+      find(arr, 'test');
+      
+    </script>
+  </body>
+
+</html>

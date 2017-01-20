@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Pavel Kovalenkov</title>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+    "use strict";
+    
+    //fibonacci
+    function fib(n) {
+      var prev = 1,
+          beforePrev = 1,
+          current,
+          position = 2;
+      
+      //with loop
+      while (position != n) {
+        current = prev + beforePrev;
+        beforePrev = prev;
+        prev = current;
+        position++;
+      }
+      
+      //with recursion
+      return (n <= 1) ? n : fib(n - 1) + fib(n - 2);
+    };
+    
+    alert(  fib(7) );
+    </script>
+  </body>
+
+</html>

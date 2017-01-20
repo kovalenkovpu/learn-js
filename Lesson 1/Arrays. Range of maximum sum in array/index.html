@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Pavel Kovalenkov</title>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+    "use strict";
+    
+    //this algorithm finds all primes up to 100 starting with 2
+    
+    //creates an array with random items
+    function createArr(last) {
+      var arr = [];
+      
+      for (var i = 0; i < (last - 1); i++) {
+        var item = Math.round(Math.random() * 10);
+        
+        arr.push(item);
+      }
+      
+      return arr;
+    };
+    
+    var arr1 = createArr(10);
+    
+    //calculates max sum of the continuous range of items
+    function getMaxSubSum(arr) {
+      var sum = 0,
+          tempSum = 0;
+      
+      for (var j = 0; j < arr.length; j++) {
+        tempSum = 0;
+        
+        for (var i = j; i < arr.length; i++) {
+          tempSum += arr[i];
+          
+          if (sum < tempSum) sum = tempSum;
+        };
+      };
+      
+      return (sum < 0) ? 0 : sum;
+    };
+    
+    alert( getMaxSubSum([-1, 2, 3, -9]) );
+    alert( getMaxSubSum([2, -1, 2, 3, -9]) );
+    alert( getMaxSubSum([-1, 2, 3, -9, 11]) );
+    alert( getMaxSubSum([-2, -1, 1, 2]) );
+    alert( getMaxSubSum([100, -9, 2, -3, 5]) );
+    alert( getMaxSubSum([1, 2, 3]) );
+    
+    </script>
+  </body>
+
+</html>
