@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Pavel Kovalenkov</title>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+    "use strict";
+    
+    //random integer number
+    function random(min, max) {
+      //Math.round(Math.random() * (max - min)) округляем не rand, а
+      //именно так, чтобы вероятность была одинаковой для интервала
+      var rand = min + Math.round(Math.random() * (max - min));
+      
+      return rand;
+    };
+    
+    alert( random(2, 6) );
+    alert( random(2, 6) );
+    alert( random(2, 6) );
+    alert( random(2, 6) );
+    alert( random(2, 6) );
+    alert( random(2, 6) );
+    alert( random(2, 6) );
+    
+    </script>
+  </body>
+
+</html>

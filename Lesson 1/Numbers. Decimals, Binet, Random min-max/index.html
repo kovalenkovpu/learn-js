@@ -39,18 +39,19 @@
     alert( fibBinet(77) );
     */
     
-    //random number
+    //random number not including max
     function random(min, max) {
       var rand = min + Math.random() * (max - min);
       
+      if (rand == max) random(min, max);
       return rand;
     };
     
-    alert( random(4, 6) );
-    alert( random(4, 6) );
-    alert( random(4, 6) );
-    alert( random(4, 6) );
-    alert( random(4, 6) );
+    alert( random(4.98, 5) );
+    alert( random(4.98, 5) );
+    alert( random(4.98, 5) );
+    alert( random(4.98, 5) );
+    alert( random(4.98, 5) );
     
     </script>
   </body>
