@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+    * Searches value in an array
+    * @param {array, *} array to search in, any value to search in an array
+    * @return {number} position of the value or -1 if there's no such value
+  */
+    
+  function find(arr, value) {
+    let position;
+    
+    for (let i = 0; i < arr.length; i++) {
+      if (value === arr[i]) position = i;
+    };
+    
+    if (position == undefined) return -1;
+    return position;
+  };
+  
+  </script>
+
+</body>
+</html>

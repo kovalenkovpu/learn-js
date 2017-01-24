@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="https://js.cx/test/libs.js"></script>
+    <script src="test.js"></script>
+    <title>Pavel Kovalenkov</title>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+    "use strict";
+    
+    //this algorithm finds all primes up to N starting with 2
+    
+    //creates an array with 2..n items
+    function createArr(last) {
+      let arr = [];
+      
+      for (let i = 0; i < (last - 1); i++) {
+        arr.push(i + 2);
+      }
+      
+      return arr;
+    };
+    
+    //change 101 if you need more primes
+    let arr = createArr(101);
+    
+    
+    /**
+     * Finds primes in an array
+     * @param {array} takes any array
+     * @return {array} returnes array of primes
+    */
+    
+    function sieve(arr) {
+      
+      let p = 2,
+          primes = [];
+          
+      while ((p * p) <= arr.length) {
+        
+        //идем по массиву от элемента (p-1) до конца и делим
+        //каждый элемент на p.
+        //Если делится - записываем в элемент 0
+        for (let i = (p - 1); i < arr.length; i++) {
+          if ((arr[i] % p) == 0) arr[i] = 0;
+        };
+        
+        //идем по массиву с позиции (p-1) и ищем
+        //первый ненулевой элемент.
+        //Записываем его значение в p
+        for (let j = (p - 1); j < arr.length; j++) {
+          if (arr[j] != 0) {
+            p = arr[j];
+            break;
+          };
+        };
+      };
+      
+      for (let k = 0; k < arr.length; k++) {
+        if (arr[k] != 0) primes.push(arr[k]);
+      }
+      
+      return primes;
+    };
+    
+    </script>
+  </body>
+
+</html>

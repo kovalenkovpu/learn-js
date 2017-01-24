@@ -14,7 +14,7 @@
     "use strict";
       
       //last item of the array
-      var goods = [1,2,3,4,5,6];
+      let goods = [1,2,3,4,5,6];
       
       function lastItem(arr) {
         alert( arr[(arr.length - 1)] );
@@ -30,7 +30,7 @@
       
       
       //array creation
-      var styles = ['Джаз', 'Блюз'];
+      let styles = ['Джаз', 'Блюз'];
       
       styles.push('Рок-н-Ролл');
       alert(styles);
@@ -46,18 +46,18 @@
       
       
       //random value out of array
-      var arr = ["Яблоко", "Апельсин", "Груша", "Лимон"],
+      let arr = ["Яблоко", "Апельсин", "Груша", "Лимон"],
           rValue = arr.length;
           
       while (rValue > (arr.length - 1)) {
-        var rValue = Math.floor((Math.random() * 10), 0);
+        let rValue = Math.floor((Math.random() * 10), 0);
       }
       
       alert('Номер элемента: ' + rValue + ', Элемент: ' + arr[(rValue - 1)]);
       
       
       //calculator
-      var item = '',
+      let item = '',
           arr = [],
           sum = 0;
       
@@ -68,27 +68,11 @@
       
       arr.pop();
       
-      for (var i=0; i < arr.length; i++) {
+      for (let i=0; i < arr.length; i++) {
         sum += arr[i];
       };
       
       alert(arr + ', а сумма: ' + sum);
-      
-      
-      //search through an array
-      function find(arr, value) {
-        var arr1 = [];
-        
-        for (var i = 0; i < arr.length; i++) {
-          if (value === arr[i]) arr1.push(i);
-        };
-        
-        (arr1.length > 0) ? alert( arr1 ) : alert( -1 );
-      };
-      
-      var arr = ["test", 2, 1.5, 2, 2, false];
-      
-      find(arr, 'test');
       
     </script>
   </body>
