@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+    /**
+     * Returns maximum summ of a range of an array elemets
+     * @param {array} Array to search through
+     * @return {number} Summ of a range
+    */
+    
+    function getMaxSubSum(arr) {
+      let sum = 0,
+          tempSum = 0;
+      
+      for (let j = 0; j < arr.length; j++) {
+        tempSum = 0;
+        
+        for (let i = j; i < arr.length; i++) {
+          tempSum += arr[i];
+          
+          if (sum < tempSum) sum = tempSum;
+        };
+      };
+      
+      return (sum < 0) ? 0 : sum;
+    };
+  </script>
+
+</body>
+</html>
