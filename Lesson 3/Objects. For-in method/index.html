@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+
+  /**
+   * Checks if Object is empty
+   * @param {Object} obj to check
+   * @return {boolean} True or False
+  */
+  function isEmpty(obj) {
+    let counter = 0;
+    
+    for (var key in obj) {
+      counter++;
+    }
+    
+    if (counter != 0) return false;
+    
+    return true;
+  }
+
+  </script>
+
+</body>
+</html>

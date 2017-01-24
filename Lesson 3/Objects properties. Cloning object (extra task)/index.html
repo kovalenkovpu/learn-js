@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+    /**
+     * Returns new object cloned from given
+     * @param {Object} object to clone from
+     * @return {Object} new object
+    */
+    
+    function clone(obj) {
+      let newObj = {};
+      
+      for (let key in obj) {
+        if (typeof obj[key] == Object) {
+          return clone(obj[key]);
+        } else {
+          newObj[key] = obj[key];
+        };
+      };
+ 
+      return newObj;
+    };
+    
+    let user1 = {
+      name: "Petr",
+      lastname: "Ivanov",
+      single: false,
+      age: 25,
+      dad: {
+        dadName: "Ivan",
+        dadAge: 50,
+        single: true
+      }
+    };
+    
+    console.log( clone(user1) );
+    
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+    function isNumeric(n) {
+      return !isNaN(parseFloat(n)) && isFinite(n);
+    };
+    
+    /**
+     * Returns multiplied values (by 2) of an object keys
+     * @param {Object} object with salaries
+     * @return {number} max value
+    */
+    
+    function multiplyNumeric(obj) {
+      
+      for (let key in obj) {
+        if ( isNumeric(obj[key]) ) obj[key] *= 2;
+      };
+    };
+
+  </script>
+
+</body>
+</html>
