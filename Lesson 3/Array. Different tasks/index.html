@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+   * Filters array in counterwise order with no changes into given one
+   * @param {array} array
+   * @return {array} filtered array
+  */
+  
+  function filterArr(arr) {
+    let newArr = [];
+    
+    for (let i = 0; i < arr.length; i++) {
+      newArr[i] = arr[i];
+    }
+    
+    newArr.sort(function(a, b) {
+      return b - a;
+    });
+    
+    return newArr;
+  }
+  
+  
+  /**
+   * Filters array with no changes into given one
+   * @param {array} array
+   * @return {array} filtered array
+  */
+  
+  function filterArr2(arr) {
+    let newArr = [];
+    
+    for (let i = 0; i < arr.length; i++) {
+      newArr[i] = arr[i];
+    }
+    
+    return newArr.sort();
+  }
+  
+  
+  /**
+   * Makes array elements go in random order
+   * @param {array} array
+   * @return {array} filtered array
+  */
+  
+  function filterRandom(arr) {
+    let newArr = [];
+    
+    for (let i = 0; i < arr.length; i++) {
+      newArr[i] = arr[i];
+    }
+    
+    newArr.sort(function(a, b) {
+      return (Math.random() >= 0.5) ? 1 : -1;
+    });
+    
+    return newArr;
+  }
+  
+  //let arr1 = [1, 2, 3, 4, 5];
+  
+  //alert( filterRandom(arr1) );
+  
+  
+  /**
+   * Sorts array of objects by age field
+   * @param {array} array of objects
+   * @return {array} sorted array
+  */
+  let vasya = { name: "Вася", age: 23 };
+  let masha = { name: "Маша", age: 18 };
+  let vovochka = { name: "Вовочка", age: 6 };
+  let kolya = { name: "Коля", age: 50 };
+
+  let people = [kolya, vasya , masha , vovochka ];
+  
+  function arraySort(arr) {
+    arr.sort(function(a, b) {
+      return (a.age - b.age);
+    });
+  }
+  
+  arraySort(people);
+  //alert(people[0].age + ' ' + people[1].age + ' ' + people[2].age + ' ' + people[3].age);
+
+  </script>
+
+</body>
+</html>

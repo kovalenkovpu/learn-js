@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+   * Changes given string into camel case
+   * @param {string} in "bla-bla-bla" form
+   * @return {string} in "blaBlaBla" camel case
+  */
+  
+  function camelize(str) {
+    let result = str.split("-");
+    
+    for (let i = 1; i < result.length; i++) {
+      result[i] = result[i].slice(0, 1).toUpperCase() + result[i].slice(1);
+    }
+    
+    return result = result.join("");
+  }
+  
+
+  </script>
+
+</body>
+</html>

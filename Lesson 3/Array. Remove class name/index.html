@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+   * Removes class from given object property
+   * @param {object, string} obj with className to change & string to remove 
+   * from obj className
+   * @return {string} new className property
+  */
+  
+  function removeClass(obj, cls) {
+    let clsName = obj.className,
+        classArr = [],
+        isAbsent = true,
+        result = [];
+    
+    //уберем лишние пробелы у cls, если есть
+    while (cls.indexOf(' ') != -1) {
+      if (cls.indexOf(' ') == 0) {
+        cls = cls.slice(1);
+      } else if (cls.lastIndexOf(' ') == (cls.length - 1)) {
+        cls = cls.slice(0, -1);
+      };
+    };
+    
+    //проверка obj.className:
+    //1. пустая строка
+    //2. один элемент
+    //3. обычная строка
+    if (clsName.length == 0) {
+      classArr[0] = "";
+    } else if (clsName.indexOf(' ') == -1) {
+      classArr[0] = clsName;
+    } else {
+      classArr = clsName.split(' ');
+    };
+    
+    for (let i = 0; i < classArr.length; i++) {
+      if (classArr[i] == cls) continue;
+      result.push(classArr[i]);
+    }
+    
+    obj.className = result.join(" ");
+  }
+
+  </script>
+
+</body>
+</html>

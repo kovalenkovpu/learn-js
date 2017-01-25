@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+   * Filters array's values between 2 given values
+   * @param {array, number, number} check array's values for a ≤ arr[i] ≤ b
+   * @return {array} new filtered array
+  */
+  
+  function filterRangeInPlace(arr, a, b) {
+    
+    for (let i = 0; i < arr.length; i++) {
+      if (b > arr[i] <  a) arr.splice(i, 1);
+    }
+  }
+  
+  </script>
+
+</body>
+</html>
