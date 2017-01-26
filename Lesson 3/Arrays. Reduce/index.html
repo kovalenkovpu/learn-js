@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  'use strict';
+  
+  /**
+  * Reduce method for partitial summs of an arrays elemets
+  * @param {array} array with numeric values
+  * @return {array} array with partitial summs as elements
+  */
+  function getSums(arr) {
+    let result = [];
+    
+    arr.reduce(function(prevValue, elem, i) {
+      return result[i] = prevValue + elem;
+    }, 0);
+    
+    return result;
+  }
+
+  </script>
+
+</body>
+</html>

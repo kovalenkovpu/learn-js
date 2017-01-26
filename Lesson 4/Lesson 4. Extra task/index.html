@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="https://js.cx/test/libs.js"></script>
+    <script src="test.js"></script>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+    'use strict';
+
+    /**
+     * Summarizes all numeric arguments of a function
+     * @param {*} any type of arguments
+     * @return {number} summ of all numeric args
+    */
+    
+    function isNumber(a) {
+        if (!isNaN(parseFloat(a)) &&
+        isFinite(a) &&
+        typeof a != "string") return true;
+    }
+    
+    function summArg(...rest) {
+        let result = 0;
+        
+        for (let key of rest) {
+            if ( isNumber(key) ) result += key;
+        }
+        
+        return result;
+    };
+ 
+  </script>
+  </body>
+
+</html>

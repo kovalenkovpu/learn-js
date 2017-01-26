@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="https://js.cx/test/libs.js"></script>
+    <script src="test.js"></script>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+    'use strict';
+    
+    let arr = ["Есть", "жизнь", "на", "Марсе"];
+    let arr1 = ["Есть", "жизнь", "на", "Марсе"];
+
+    let arrLength = [];
+    for (let i = 0; i < arr.length; i++) {
+      arrLength[i] = arr[i].length;
+    }
+    
+    arrLength; // 4,5,2,5
+    
+    /**
+     * Makes the same that the loop above with Map method
+     * @param {array} with string elements
+     * @return {array} with @param elements lenghts
+    */
+    
+    function mapArr(arr) {
+      let result = arr.map(function(elem, index, arr) {
+        return elem = elem.length;
+      });
+      
+      return result;
+    }
+    
+    console.log( mapArr(arr1) );
+ 
+  </script>
+  </body>
+
+</html>
