@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+   * Prints out elements of linked list using a loop
+   * @param {object} 
+   * @return {number} values of each object value key
+  */
+  
+  function aclean(arr) {
+    //debugger;
+    let result = arr;
+    
+    for (let i = 0; i < arr.length; i++) {
+      let template = [];
+      
+      for (let k = 0; k < arr[i].length; k++) {
+        template[k] = arr[i][k];
+      }
+      
+      template = template.sort().join("").toLowerCase();
+      
+      for (let j = i + 1; j < arr.length; j++) {
+        let target = [];
+        
+        for (let k = 0; k < arr[j].length; k++) {
+          target[k] = arr[j][k];
+        }
+        
+        target = target.sort().join("").toLowerCase();
+        
+        if (template == target) {
+          result.splice(j, 1);
+          j--;
+        }
+      }
+    }
+    
+    return result;
+  }
+  
+  let arr = ["воз", "киборг", "корсет", "зов", "гробик", "костер", "сектор"];
+  
+  console.log( aclean(arr) );
+  
+  </script>
+
+</body>
+</html>
