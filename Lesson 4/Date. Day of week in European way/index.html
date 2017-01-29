@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+   * Takes date and returns day of week in eurpoean numeric format
+   * @param{object} takes object of Date type
+   * @return{number} day of week
+  */
+  /* //1st way
+  function getLocalDay(date) {
+    let days = ["7", "1", "2", "3", "4", "5", "6"];
+    let day = date.getDay();
+    
+    return days[day];
+  } */
+
+  //2nd way
+  function getLocalDay(date) {
+    let day = date.getDay();
+    
+    return (day == 0) ? 7 : day;
+  }
+  
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+      "use strict";
+      //let date = new Date(2012, 1, 20, 3, 12, 0, 0);
+      
+      //console.log(date);
+      
+      /**
+       * Returns how many seconds have passed since the beginning of the day
+       * @param{} no params
+       * @return{number} number of seconds since the start of day
+      */
+      
+      function getSecondsToday() {
+        let date = new Date(),
+            startDay = new Date();
+        let result = 0;
+        
+        startDay.setHours(0, 0, 0, 0);
+        result = Math.round( (date - startDay) / 1000 );
+        
+        console.log(date);
+        console.log(startDay);
+        console.log(result);
+      }
+      
+      getSecondsToday();
+      
+      
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+   * Returns last day of a given month of a year
+   * @param{number} 4-digit year value
+   * @param{number} month (0 - 11)
+   * @return{number} returns last day of the month
+  */
+  function getLastDayOfMonth(year, month) {
+    let fullDate = new Date(year, month + 1, 0);
+    
+    return fullDate.getDate();
+  }
+  </script>
+
+</body>
+</html>

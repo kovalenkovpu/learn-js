@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+    "use strict";
+      
+    /**
+     * Returns date in locale 2-digit format
+     * @param{number} year
+     * @param{number} month
+     * @param{number} day
+     * @return{string} date in locale
+    */
+    
+    function formatDate(date) {
+      
+      return date.toLocaleString("ru", {year: "2-digit", month: "numeric", day: "numeric"});
+      
+    }
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+   * Takes date and returns day of week in locale str format
+   * @param{object} takes object of Date type
+   * @return{string} day of week
+  */
+  /* //simpliest way to complete the task
+  function getWeekDay(date) {
+    let weekDay = date.getDay();
+    
+    switch (weekDay) {
+      case 0:
+        weekDay = "вс";
+        break;
+      case 1:
+        weekDay = "пн";
+        break;
+      case 2:
+        weekDay = "вт";
+        break;
+      case 3:
+        weekDay = "ср";
+        break;
+      case 4:
+        weekDay = "чт";
+        break;
+      case 5:
+        weekDay = "пт";
+        break;
+      case 6:
+        weekDay = "сб";
+        break;
+    }
+    
+    return weekDay;
+  }
+  */
+  
+  //second way
+  function getWeekDay(date) {
+    let weekDays = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
+    
+    let day = date.getDay();
+    
+    return weekDays[day];
+  }
+  
+  
+  </script>
+
+</body>
+</html>

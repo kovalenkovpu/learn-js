@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+      
+    /**
+    * 
+    * @param{number} year
+    * @param{number} month
+    * @param{number} day
+    * @return{string} date in locale
+    */
+    
+    function formatDate(date) {
+      debugger;
+      let currentDate = Date.now(),
+          passed = (currentDate - date) / 1000,
+          optionsYear = {
+            year: "2-digit",
+            month: "numeric",
+            day: "numeric"
+          },
+          optionsTime = {
+            hour: "numeric",
+            minute: "numeric"
+          };
+      
+      if (passed < 1) {
+        return "только что";
+      } else if ( passed < 60 ) {
+        return passed + " сек. назад";
+      } else if ( passed / 60 < 60 ) {
+        passed = passed / 60;
+        return passed + " мин. назад";
+      } else {
+        return date.toLocaleString("ru", optionsYear) + " " +
+              date.toLocaleString("ru", optionsTime);
+      }
+    }
+    
+    console.log( formatDate(new Date(2013, 2, 24, 0, 0, 0)) );
+  </script>
+
+</body>
+</html>

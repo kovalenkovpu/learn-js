@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+      "use strict";
+      //let date = new Date(2012, 1, 20, 3, 12, 0, 0);
+      
+      //console.log(date);
+      
+      /**
+       * Returns how many seconds are left till tomorrow
+       * @param{} no params
+       * @return{number} number of seconds till tomorrow
+      */
+      
+      function getSecondsToTomorrow() {
+        let date = new Date(),
+            tomorrow = new Date();
+        let result = 0;
+        
+        tomorrow.setDate(date.getDate() + 1);
+        tomorrow.setHours(0, 0, 0, 0);
+        result = Math.round( (tomorrow - date) / 1000 );
+        
+        console.log(date);
+        console.log(tomorrow);
+        console.log(result);
+      }
+      
+      getSecondsToTomorrow();
+      
+      
+    </script>
+  </body>
+
+</html>

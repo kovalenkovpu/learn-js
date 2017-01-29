@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+      
+    /**
+    * Returns summ of values a and b when given foo(a)(b)
+    * @param{number} first number
+    * @param{number} second number
+    * @return{number} summ of first and second numbers
+    */
+    
+    function sum(a) {
+      return function(b) {
+        return a + b;
+      }
+    }
+    
+    console.log( sum(231)(3) );
+  </script>
+
+</body>
+</html>

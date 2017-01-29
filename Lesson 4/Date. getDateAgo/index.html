@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+   * Return the date that was X days back from the given date
+   * @param{object} takes object of Date type
+   * @param{number} takes number of days we want to find result for
+   * @return{number} returns the date as number
+  */
+  
+  function getDateAgo(date, days) {
+    let newDate = new Date();
+    
+    //setting date components for new Date object
+    newDate.setFullYear(date.getFullYear());
+    newDate.setMonth(date.getMonth());
+    newDate.setDate(date.getDate());
+    
+    //finding date for {days} days ago
+    newDate.setDate(newDate.getDate() - days);
+    
+    return newDate.getDate();
+  }
+  
+  </script>
+
+</body>
+</html>
