@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+  * Creates buffer object
+  * @param{}
+  * @return{object} new buffer object 
+  */
+    
+  function makeBuffer() {
+    let storage = "";
+    
+    /**
+    * Inserts value into buffer when called with argement
+    * @param{*} any argument to write in buffer
+    * @return{string} returnes buffer as a srting
+    */
+    function buffer(value) {
+      if (arguments.length == 0) return storage;
+      storage += value;
+    }
+    
+    buffer.clear = function() {
+      return storage = "";
+    }
+    
+    return buffer;
+  }
+  </script>
+
+</body>
+</html>
