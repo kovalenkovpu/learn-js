@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+    "use strict";
+    
+    /**
+     * Works as in-build filter function
+     * @param{arr} array to filter
+     * @param{func} callback function
+     * @return{array} result as a filtered array
+    */
+    function filter(arr, func) {
+      let foo = func;
+      let newArr = [];
+      
+      for (let j = 0; j < arr.length; j++) {
+        if (foo(arr[j]) == true) newArr.push(arr[j]);
+      }
+      
+      return newArr;
+    };
+    
+    
+    /**
+     * Callback function to sort each value of arr
+     * @param{number} minimum value to compare with each value of arr in filter()
+     * @param{number} maximum value to compare with each value of arr in filter()
+     * @return{boolean} true or false
+    */
+    function inBetween(a, b) {
+      
+      return function(item) {
+        return (a <= item && item <= b);
+      };
+    };
+    
+    
+    /**
+     * Callback function to check if value of arr in filter is in arr1
+     * @param{array} array to compare values of arr with
+     * @return{boolean} true or false
+    */
+    function inArray(arr1) {
+      let sample = arr1;
+      
+      return function(item) {
+        let result = false;
+        
+        for (let i = 0; i < sample.length; i++) {
+          if (item == sample[i]) {
+            result = true;
+            break;
+          }
+        };
+        
+        return result;
+      };
+    };
+
+  </script>
+
+</body>
+</html>

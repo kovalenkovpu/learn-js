@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+  * 
+  * @param{}
+  * @return{object}
+  */
+  function byField(field) {
+    return function(a, b) {
+      return (a[field] > b[field]) ? 1 : -1;
+    }
+  };
+  
+  </script>
+
+</body>
+</html>
