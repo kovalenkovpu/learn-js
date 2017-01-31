@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+
+  /**
+  * Calculates summ and product of 2 parameters
+  */
+
+  function Calculator() {
+    this.a = 0;
+    this.b = 0;
+    
+    /**
+    * Returns a and b
+    * @param {} no params
+    * @return {number} a
+    * @return {number} b
+    */
+    this.read = function() {
+      this.a = +prompt("a?", 0);
+      this.b = +prompt("b?", 0);
+    };
+    
+    /**
+    * Calsulates sum
+    * @param {} no params
+    * @return {number} sum of a and b
+    */
+    this.sum = function() {
+      return ( this.a + this.b );
+    };
+    
+    /**
+    * Calsulates product
+    * @param {} no params
+    * @return {number} product of a and b
+    */
+    this.mul = function() {
+      return ( this.a * this.b );
+    };
+  };
+  
+  /*let calc = new Calculator();
+  
+  calc.read();
+  console.log( calc.sum() );
+  console.log( calc.mul() );*/
+  
+  </script>
+
+</body>
+</html>

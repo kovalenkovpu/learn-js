@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  'use strict';
+  
+  /**
+   * Calculates summ and product of 2 parameters
+   * @param {String}
+   * @returns {{min:Number, max:Number}}
+   */
+  
+  let ladder = {
+    step: 0,
+    up: function() { // вверх по лестнице
+      this.step++;
+      return this;
+    },
+    down: function() { // вниз по лестнице
+      this.step--;
+      return this;
+    },
+    showStep: function() { // вывести текущую ступеньку
+      console.log( this.step );
+      return this;
+    }
+  };
+  
+  ladder.up().up().down().up().down().showStep();
+  ladder.up().up().up().up().up().up().showStep();
+  
+  </script>
+
+</body>
+</html>

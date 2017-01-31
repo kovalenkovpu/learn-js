@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="https://js.cx/test/libs.js"></script>
+    <script src="test.js"></script>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    
+    <script>
+    'use strict';
+    
+    //const inputData = '1, -5.8 или 10, хотя 34 + -5.3 и 73';
+    
+    //функция проверки на number
+    function isNumeric(value) {
+      return (!isNaN(value) && value != undefined);
+    };
+
+    /**
+     * Найти min/max в произвольной строке
+     * @param   {String} входные данные
+     * @returns {{min:Number, max:Number}}  объект
+     */
+    function getMinMax(string) {
+      let newArr = string.split(" ");
+      let min = 0,
+          max = 0;
+      
+    	newArr = newArr.map(function(item) {
+    	  return +item;
+    	});
+    	
+    	newArr.forEach(function(item) {
+    	  if ( isNumeric(item) && (min > item) ) min = item;
+    	  if ( isNumeric(item) && (max < item) ) max = item;
+    	});
+    	
+    	return {
+    	  min: min,
+    	  max: max
+    	}
+    };
+
+  //console.log(getMinMax(inputData));
+
+  </script>
+  </body>
+
+</html>

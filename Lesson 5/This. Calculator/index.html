@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  'use strict';
+  
+  /**
+   * Calculates summ and product of 2 parameters
+   */
+   let calculator = {
+     a: 0,
+     b: 0,
+     
+     /**
+     * Writes 2 values: a and b
+     * @param {} no params needed
+     * @return {} changes object properties a and b
+     */
+     read: function() {
+       this.a = +prompt("Введите первое значение", 0);
+       this.b = +prompt("Введите второе значение", 0);
+     },
+     
+     /**
+     * Returns the sum of and b
+     * @param {} no params needed
+     * @return {number} sum of a and b
+     */
+     sum: function() {
+       return this.a + this.b;
+     },
+     
+     /**
+     * Returns the product of and b
+     * @param {} no params needed
+     * @return {number} product of a and b
+     */
+     mul: function() {
+       return this.a * this.b;
+     }
+   };
+   
+   calculator.read();
+   console.log( calculator.sum() );
+  
+  </script>
+
+</body>
+</html>
