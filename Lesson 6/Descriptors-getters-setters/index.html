@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="https://js.cx/test/libs.js"></script>
+    <script src="test.js"></script>
+  </head>
+
+  <body>
+    <h1>Найти min/max в произвольной строке</h1>
+    
+    <script>
+    'use strict';
+    
+    /**
+     * 
+     * @param{number}
+     * @returns{boolean}
+     */
+    function User(fullName) {
+      this.fullName = fullName;
+      
+      Object.defineProperties(this, {
+      
+        firstName: {
+          get: function() {
+            return this.fullName.split(" ")[0];
+          },
+          
+          set: function(newFirst) {
+            this.fullName = newFirst + " " + this.lastName;
+          }
+        },
+      
+        lastName: {
+          get: function() {
+            return this.fullName.split(" ")[1];
+          },
+          
+          set: function(newLast) {
+            this.fullName = this.firstName + " " + newLast;
+          }
+        }
+      });
+    };
+    
+    
+    
+    let vasya = new User("Василий Попкин");
+    
+    // чтение firstName/lastName
+    console.log( vasya.firstName ); // Василий
+    
+    console.log( vasya.lastName ); // Попкин
+    
+    // запись в lastName
+    vasya.lastName = 'Сидоров';
+
+    console.log( vasya.fullName ); // Василий Сидоров
+  </script>
+  </body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  /**
+  * Stores values given by a user
+  */
+  function Accumulator(startingValue) {
+    this.value = startingValue;
+    
+    this.read = function() {
+      let current = +prompt('Введите значение: ', 0);
+      this.value += current;
+    };
+  };
+
+  </script>
+
+</body>
+</html>

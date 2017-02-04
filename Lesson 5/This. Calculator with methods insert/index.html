@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+  * Calculator constructor with the ability to add
+  * new methods
+  * @constructor
+  */
+  function Calculator() {
+    let message = "";
+    
+    /**
+     * Object to store math operands and functions
+     * makes all calculations with input data.
+     * Extensible by Calculator.addMethod()
+     */
+    this.operation = {
+      "+": function(a, b) {
+        return a + b;
+      },
+      "-": function(a, b) {
+        return a - b;
+      }
+    };
+    
+    /**
+     * Checks if input value is numeric
+     * @param{string} to check
+     * @return{boolean} true if numeric
+     */
+    function isNumeric(value) {
+      if ( !isNaN(value) && value != undefined && isFinite(value) ) return true;
+    };
+    
+    /**
+     * Checks if input value follows pattern "a {operand} b"
+     * @param{array} to check
+     * @return{boolean} true if matches
+     */
+    function checkInput(input) {
+      if (input.length > 3 ) {
+        message = "В строке больше 3х слагаемых";
+        return false;
+      } else if ( !isNumeric(+input[0]) || !isNumeric(+input[2]) ) {
+        message = "Вы ввели не цифры";
+        return false;
+      } else {
+        return true;
+      };
+    };
+    
+    /**
+     * Method to return result
+     * @param{string} of a pattern "a {operand} b"
+     * @return{number} result of math operation
+     */
+    this.calculate = function(str) {
+      let arr = str.split(" "),
+          operand = arr[1],
+          val1 = +arr[0],
+          val2 = +arr[(arr.length - 1)];
+      
+      if ( !checkInput(arr) ) return message;
+      
+      return this.operation[operand](val1, val2);
+    };
+    
+    /**
+     * Method to add new math function
+     * @param{string} name of new math operation
+     * @param{function} describes what new operation does
+     * @return{}
+     */
+    this.addMethod = function(name, func) {
+      this.operation[name] = func;
+    };
+  };
+
+  </script>
+
+</body>
+</html>

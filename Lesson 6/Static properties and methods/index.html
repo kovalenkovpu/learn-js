@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  function Article() {
+    Article.count++;
+    this.created = new Date();
+    
+    Article.last = this.created;
+  };
+  
+  Article.count = 0;
+  
+  Article.showStats = function() {
+      alert("Всего: " + this.count + ", Последняя: " + this.last);
+    };
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  'use strict';
+  
+    /**
+    * 
+    * @param {string} no params needed
+    */
+    
+    function sum(value) {
+      let result = value;
+      
+      function next(a) {
+        result += a;
+        return next;
+      };
+      
+      next.toString = function() {
+        return result;
+      };
+      
+      return next;
+    };
+    
+    console.log( sum(1)(2) ); // 1 + 2
+    console.log( sum(1)(2)(3) ); // 1 + 2 + 3
+    console.log( sum(5)(-1)(2) );
+    console.log( sum(6)(-1)(-2)(-3) );
+    console.log( sum(0)(1)(2)(3)(4)(5) );
+
+  </script>
+
+</body>
+</html>

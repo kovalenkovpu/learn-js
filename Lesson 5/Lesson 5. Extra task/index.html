@@ -7,17 +7,20 @@
   </head>
 
   <body>
-    <h1>Hello Plunker!</h1>
+    <h1>Найти min/max в произвольной строке</h1>
     
     <script>
     'use strict';
     
-    //const inputData = '1, -5.8 или 10, хотя 34 + -5.3 и 73';
-    
-    //функция проверки на number
-    function isNumeric(value) {
-      return (!isNaN(value) && value != undefined);
+    /**
+     * Проверяет значение на число
+     * @param{number} число на проверку
+     * @returns{boolean} true если число
+     */
+    function isNumeric(n) {
+      return !isNaN(parseFloat(n)) && isFinite(n);
     };
+    
 
     /**
      * Найти min/max в произвольной строке
@@ -25,26 +28,21 @@
      * @returns {{min:Number, max:Number}}  объект
      */
     function getMinMax(string) {
-      let newArr = string.split(" ");
-      let min = 0,
-          max = 0;
+      let REG_EXP = /(\-)?\d+(\.\d+)?/g;
+      let arr = string.match(REG_EXP); //парсим строку
+
+      let min = arr[0],
+          max = arr[0];
       
-    	newArr = newArr.map(function(item) {
-    	  return +item;
-    	});
-    	
-    	newArr.forEach(function(item) {
-    	  if ( isNumeric(item) && (min > item) ) min = item;
-    	  if ( isNumeric(item) && (max < item) ) max = item;
+    	let newArr = arr.map( item => {
+    	  if (isNumeric(item)) return item;
     	});
     	
     	return {
-    	  min: min,
-    	  max: max
+    	  min: Math.min(...newArr),
+    	  max: Math.max(...newArr)
     	}
     };
-
-  //console.log(getMinMax(inputData));
 
   </script>
   </body>
