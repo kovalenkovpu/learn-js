@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  function formatDate(date) {
+    let options = {day: '2-digit', month: '2-digit', year: '2-digit'},
+    dateToParse;
+    
+    if (date instanceof Date ) {
+      dateToParse = date;
+      
+    } else if (typeof date == 'number') {
+      dateToParse = new Date(date * 1000);
+      
+    } else if (Array.isArray(date)) {
+      dateToParse = new Date(...date);
+      
+    } else if (typeof date == 'string') {
+      let arrDate = date.split('-');
+      
+      arrDate[1]--;
+      dateToParse = new Date(...arrDate);
+      
+    } else {
+      alert("Введен неверный формат даты!");
+    }
+    
+    return dateToParse.toLocaleString("ru", options);
+  };
+  
+
+  </script>
+
+</body>
+</html>

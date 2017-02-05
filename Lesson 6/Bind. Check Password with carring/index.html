@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+
+</head>
+<body>
+
+  <script>
+  "use strict";
+
+  function ask(question, answer, ok, fail) {
+    let result = prompt(question, '');
+    if (result.toLowerCase() == answer.toLowerCase()) ok();
+    else fail();
+  }
+
+  let user = {
+    login: 'Василий',
+    password: '12345',
+    
+    // метод для вызова из ask
+    loginDone: function(result) {
+      alert( this.login + (result ? ' вошёл в сайт' : ' ошибка входа') );
+    },
+  
+    checkPassword: function() {
+      let self = this;
+      
+      ask("Ваш пароль?", this.password,
+        function() {
+          self.loginDone(true);
+        },
+        function() {
+          self.loginDone(false);
+        }
+      );
+    }
+  };
+  
+  let vasya = user;
+  user = null;
+  vasya.checkPassword();
+  console.log(vasya);
+  console.log(vasya.loginDone);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  function sumArgs() {
+    return [].reduce.call(arguments, function(a, b) {
+      return a + b;
+    });
+  }
+
+  console.log( sumArgs(1, 2, 3) );
+  </script>
+
+</body>
+</html>
