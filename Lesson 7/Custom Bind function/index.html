@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+   /**
+  * Allows to run func in a given context
+  * @param{function} function to bind context
+  * @param{*} context to run function within
+  * @param{*} arguments to run function with
+  * @returns{} function-decorator
+  */
+  function bind(func, context, ...rest) {
+    return (function() {
+      return func.apply(context, rest);
+    })();
+  };
+  
+  
+  let user = {
+    name: "Pete",
+    age: 28
+  }
+  
+  function getName(lastName) {
+    console.log(this.name + " " + lastName);
+  };
+  
+  function toDogAge() {
+    console.log( (this.age / 7) );
+  };
+  
+  function multiplyArr(arr) {
+    console.log( arr.map(item => item * this.age) );
+  };
+  
+  bind(getName, user, "Nikiforovich");
+  bind(toDogAge, user);
+  bind(multiplyArr, user, [1, 2, 3, 4], 5);
+   
+  </script>
+
+</body>
+</html>

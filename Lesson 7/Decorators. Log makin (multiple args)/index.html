@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+ 
+   //---------------РЕАЛИЗАЦИЯ №1 ЧЕРЕЗ МАССИВ ОБЪЕКТОВ
+  
+  /**Decorator to log func arguments
+   * @param{function} function to run
+   * @returns{function} decorator
+  */
+  
+/*
+  function makeCaching(f) {
+    let cache = [], //массив для хранения результатов вызовов f
+        storedCall; //каждое новое значение вызова f
+    
+    return function(arg) {
+      let cacheItem = arg.toString(),
+          tempObj = {},
+          position,
+          toRun = true;
+      
+      //идем по массиву cache
+      //внутренним for идем по объектам массива cache
+      outer: for (let i = 0; i < cache.length; i++) { 
+        for (let key in cache[i]) { 
+          if (key == cacheItem) {
+            toRun = false;
+            position = i;
+            break outer;
+          }
+        };
+      };
+      
+      if (toRun) {
+        //запоминаем значение вызова функции f
+        //затем пишем в объект массива кэша значение вызова f
+        storedCall = f.apply(this, arguments);
+        tempObj[cacheItem] = storedCall;
+        cache.push(tempObj);
+        
+        return storedCall;
+      } else {
+        return cache[position][cacheItem];
+      };
+    };
+  };
+  
+*/
+  
+  //--------------РЕАЛИЗАЦИЯ №2 ЧЕРЕЗ МАССИВ МАССИВОВ
+  
+  /**Decorator to cache func arguments
+   * @param{function} function to run
+   * @returns{function} decorator
+  */
+  
+  function makeCaching(f) {
+    let cache = [], //массив для хранения результатов вызовов f
+        storedCall; //каждое новое значение вызова f
+    
+    return function(arg) {
+      let cacheItem = arg,
+          toRun = true;
+      
+      for (let item of cache) {
+        if (item[0] == arg) {
+          return item[1];
+          toRun = false;
+          break;
+        }
+      };
+      
+      if (toRun) {
+        storedCall = f.apply(this, arguments);
+        cache.push([arg, storedCall]);
+        
+        return storedCall;
+      }
+    }
+  };
+
+  </script>
+
+</body>
+</html>

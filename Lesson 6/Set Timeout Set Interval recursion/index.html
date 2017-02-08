@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+ 
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**
+   * types number from 1 to 20 with 100ms interval
+   * @param{} no params
+   * @returns{} prints numbers
+   */
+  
+  function  printNumbersInterval() {
+    let i = 1;
+    
+    let timerId = setTimeout(function iter() {
+      console.log(i);
+      i++;
+      if (i <= 20) timerId = setTimeout(iter, 100);
+    }, 100);
+  };
+  
+  printNumbersInterval();
+  
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+  /**Decorator to log func arguments
+   * @param{function} function to run
+   * @param{array} to store logs
+   * @returns{function}
+  */
+   
+  function makeLogging(f, log) {
+    return function(arg) {
+      log.push(arg);
+      
+      return f.apply(this, arguments);
+    }
+  };
+
+  </script>
+
+</body>
+</html>

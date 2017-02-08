@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+   /**
+  * Creates function-decorator which runs f in ms time
+  * @param{object} function "f" to delay execution for
+  * @param{number} ms to delay "f" execution for
+  * @returns{object} function-decorator
+  */
+  function debounce(f, ms) {
+    let lastRun = 0,
+        delay = 0, //
+        accept = true;
+        
+    return function() {
+      delay = Date.now() - lastRun;
+      if (delay < ms) accept = false;
+      
+      if ( accept ) {
+        f.apply(this, arguments);
+        setTimeout(function() {
+          accept = true;
+        }, ms);
+        lastRun = Date.now();
+      };
+    };
+  };
+  
+  function fooTime(a) {
+    console.log(a + ":" + Date.now());
+  };
+
+  let foo = debounce(fooTime, 1000);
+  let time = Date.now();
+  
+  console.log("0:" + time);
+  setTimeout( function() { foo(1)}, 100); //3.1415
+  setTimeout( function() { foo(2)}, 1200); //6.28
+  setTimeout( function() { foo(3)}, 1300); //не выполнится
+  setTimeout( function() { foo(4)}, 5300); //выполнится
+  </script>
+
+</body>
+</html>

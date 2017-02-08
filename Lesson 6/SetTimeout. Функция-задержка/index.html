@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+   /**
+  * Creates function-decorator which runs f in ms time
+  * @param{object} function "f" to delay execution for
+  * @param{number} ms to delay "f" execution for
+  * @returns{object} function-decorator
+  */
+  function delay(f, ms) {
+    
+    return function() {
+      setTimeout(f.bind(this, ...arguments), ms);
+    };
+  };
+  
+  function foo(a, b, c) {
+    console.log(a * b * c);
+  }
+  
+  let delayed1 = delay(foo, 2000);
+  
+  delayed1(2, 4, 6);
+  delayed1(2, 4, 8);
+  
+  </script>
+
+</body>
+</html>
