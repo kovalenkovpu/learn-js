@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+ 
+  /**
+   * User constructor
+   * @constructor
+   */
+  
+  function User() {
+    let firstName,
+        surname;
+    
+    this.setFirstName = function(name) {
+      firstName = name;
+    };
+    
+    this.setSurname = function(name) {
+      surname = name;
+    };
+    
+    this.getFullName = function() {
+      return firstName + " " + surname;
+    };
+  };
+   
+  
+  let user = new User();
+  user.setFirstName("Петя");
+  user.setSurname("Иванов");
+  
+  alert( user.getFullName() ); // Петя Иванов
+  
+  user.setSurname("Сидоров");
+  alert( user.getFullName() );
+  
+  </script>
+
+</body>
+</html>

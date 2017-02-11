@@ -1,4 +1,4 @@
-describe("makeCaching", function() {
+/* describe("makeCaching", function() {
 
   it("запоминает предыдущее значение функции с таким аргументом", function() {
     function f(x) {

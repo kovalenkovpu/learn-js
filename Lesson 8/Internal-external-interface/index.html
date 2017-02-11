@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+ 
+   //---------------РЕАЛИЗАЦИЯ №1 ЧЕРЕЗ ОБЪЕКТ
+  
+  /** Coffee machine constructor
+   * @constructor
+   * @param {number} power of a machine
+  */
+  
+  function CoffeeMachine(power) {
+    this.waterAmount = 0;
+  
+    let WATER_HEAT_CAPACITY = 4200,
+        timerId;
+    
+    function getBoilTime() {
+      return this.waterAmount * WATER_HEAT_CAPACITY * 80 / power;
+    };
+  
+    function onReady() {
+      console.log( 'Кофе готов!' );
+    };
+  
+    this.run = function() {
+      timerId = setTimeout(onReady, getBoilTime.call(this));
+    };
+    
+    this.stop = function() {
+      clearTimeout(timerId);
+    };
+  };
+  
+  let coffeeMachine = new CoffeeMachine(50000);
+  coffeeMachine.waterAmount = 200;
+
+  coffeeMachine.run();
+  coffeeMachine.stop(); // кофе приготовлен не будет
+  
+  </script>
+
+</body>
+</html>

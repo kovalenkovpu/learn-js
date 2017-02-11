@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+ 
+  /**
+   * Coffee machine constructor
+   * @constructor
+   */
+  
+  function CoffeeMachine(power, capacity) {
+    let waterAmount = 0,
+        timeToBoil = 0,
+        self = this;
+  
+    let WATER_HEAT_CAPACITY = 4200;
+  
+    function getTimeToBoil() {
+      return waterAmount * WATER_HEAT_CAPACITY * 80 / power;
+    };
+    
+    this.getWaterAmount = function(amount) {
+      return waterAmount;
+    };
+    
+    this.setWaterAmount = function(amount) {
+      if (amount < 0) {
+        throw new Error("Значение должно быть положительным");
+      }
+      if (amount > capacity) {
+        throw new Error("Нельзя залить больше, чем " + capacity);
+      }
+  
+      waterAmount = amount;
+    };
+    
+    this.addWater = function(portion) {
+      if ( (waterAmount + portion) > capacity) {
+        throw new Error("Вы долили слишком много! Можно не больше: " + (capacity - waterAmount) + " мл");
+      }
+      if (portion < 0) {
+        throw new Error("Значение должно быть положительным");
+      }
+      waterAmount += portion;
+    };
+    
+    function onReady() {
+      console.log("Кофе готов! - за " + getTimeToBoil()/1000 + " сек.");
+    };
+    
+    this.setOnReady = function(func) {
+      if (arguments.length) onReady = func;
+    };
+  
+    this.run = function() {
+      setTimeout(function() {
+        onReady();
+      }, getTimeToBoil());
+    };
+  };
+  
+  
+  let coffeeMachine = new CoffeeMachine(20000, 500);
+  coffeeMachine.setWaterAmount(150);
+
+  coffeeMachine.setOnReady(function() {
+    let amount = coffeeMachine.getWaterAmount();
+    console.log( 'Готов кофе: ' + amount + 'мл' ); // Готов кофе: 150 мл
+  });
+
+  coffeeMachine.run();
+  
+  coffeeMachine.setOnReady(function() {
+    console.log("onReady изменен!"); // onReady изменен!
+  });
+  
+  //coffeeMachine.run();
+ 
+  </script>
+
+</body>
+</html>

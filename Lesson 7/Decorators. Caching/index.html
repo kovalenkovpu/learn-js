@@ -9,21 +9,73 @@
 
   <script>
   "use strict";
+ 
+   //---------------РЕАЛИЗАЦИЯ №1 ЧЕРЕЗ ОБЪЕКТ
   
   /**Decorator to log func arguments
    * @param{function} function to run
-   * @param{array} to store logs
-   * @returns{function}
+   * @returns{function} decorator
   */
-   
-  function makeLogging(f, log) {
-    return function(...rest) {
-      log.push(rest);
+  
+  function makeCaching(f) {
+    let cache = {}, //объект для хранения результатов вызовов f
+        storedCall; //каждое новое значение вызова f
+    
+    return function(arg) {
+      let cacheItem = arg + "",
+          toRun = true;
       
-      return f.apply(this, rest);
+      for (let key in cache) { 
+        if (key == cacheItem) {
+          toRun = false;
+          return cache[key];
+          break;
+        }
+      };
+      
+      if (toRun) {
+        storedCall = f.apply(this, arguments);
+        cache[arg] = storedCall;
+        
+        return storedCall;
+      };
+    };
+  };  
+
+ 
+  //--------------РЕАЛИЗАЦИЯ №2 ЧЕРЕЗ МАССИВ МАССИВОВ
+  
+  /**Decorator to cache func arguments
+   * @param{function} function to run
+   * @returns{function} decorator
+  */
+/*  
+  function makeCaching(f) {
+    let cache = [], //массив для хранения результатов вызовов f
+        storedCall; //каждое новое значение вызова f
+    
+    return function(arg) {
+      let cacheItem = arg,
+          toRun = true;
+      
+      for (let item of cache) {
+        if (item[0] == arg) {
+          toRun = false;
+          
+          return item[1];
+        }
+      };
+      
+      if (toRun) {
+        storedCall = f.apply(this, arguments);
+        cache.push([arg, storedCall]);
+        
+        return storedCall;
+      }
     }
   };
-  
+
+*/
   </script>
 
 </body>

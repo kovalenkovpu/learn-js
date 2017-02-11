@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+ 
+  /**
+   * Coffee machine constructor
+   * @constructor
+   */
+  
+  function CoffeeMachine(power, capacity) {
+    let waterAmount = 0;
+  
+    this.setWaterAmount = function(amount) {
+      if (amount < 0) {
+        throw new Error("Значение должно быть положительным");
+      }
+      if (amount > capacity) {
+        throw new Error("Нельзя залить воды больше, чем " + capacity);
+      }
+  
+      waterAmount = amount;
+    };
+  
+    this.getWaterAmount = function() {
+      return waterAmount;
+    };
+    
+    this.getPower = function() {
+      return power;
+    };
+  };
+  
+  let coffee = new CoffeeMachine(2000, 2000);
+  
+  coffee.setWaterAmount(1500);
+  alert( coffee.getWaterAmount() );
+  alert( coffee.getPower() );
+  
+  </script>
+
+</body>
+</html>
