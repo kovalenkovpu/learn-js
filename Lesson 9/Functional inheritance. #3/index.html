@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+  <script>
+  "use strict";
+  
+  function Machine(power) {
+    this._power = power;
+    this._enabled = false;
+  
+    let self = this;
+  
+    this.enable = function() {
+      self._enabled = true;
+    };
+  
+    this.disable = function() {
+      self._enabled = false;
+    };
+  };
+  
+  function Fridge(power) {
+    Machine.apply(this, arguments);
+    
+    let food = [],
+        foodToReturn = [],
+        maxVolume = power / 100;
+    
+    this.addFood = function() {
+      let volume = food.length + arguments.length;
+      
+      if (this._enabled && (volume < maxVolume) ) {
+        food.push(...arguments);
+      } else if (volume >= maxVolume) {
+        console.log("Холодильник переполнен!");
+      } else {
+        throw new Error("Холодильник выключен!");
+      }
+    };
+    
+    this.getFood = function() {
+      foodToReturn = food.slice();
+      return foodToReturn;
+    };
+  };
+  
+  /*
+  let fridge = new Fridge(500);
+  fridge.enable();
+  fridge.addFood("котлета");
+  fridge.addFood("сок", "варенье");
+  
+  let fridgeFood = fridge.getFood();
+  console.log( fridgeFood ); // котлета, сок, варенье
+  
+  // добавление элементов не влияет на еду в холодильнике
+  fridgeFood.push("вилка", "ложка");
+  
+  console.log( fridge.getFood() ); // внутри по-прежнему: котлета, сок, варенье
+  */
+  
+  let fridge1 = new Fridge(500);
+  fridge1.enable();
+  fridge1.addFood("котлета");
+  fridge1.addFood("сок", "зелень");
+  fridge1.addFood("варенье", "пирог", "торт"); // ошибка, слишком много еды
+  </script>
+
+</body>
+
+</html>

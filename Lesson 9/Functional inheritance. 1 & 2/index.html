@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+  <script>
+  "use strict";
+  
+  function Machine(power) {
+    this._enabled = false;
+    this.enable = function() {
+      this._enabled = true;
+    };
+    this.disable = function() {
+      this._enabled = false;
+    };
+  };
+  
+  function CoffeeMachine(power) {
+    Machine.apply(this, arguments);
+    
+    let waterAmount = 0;
+    let timerId;
+    this.setWaterAmount = function(amount) {
+      waterAmount = amount;
+    };
+    function onReady() {
+      alert('Кофе готово!');
+    }
+    this.run = function() {
+      if (this._enabled === false) {
+        alert("Кофеварка выключена!");
+      } else {
+        timerId = setTimeout(onReady, 1000);
+      }
+    };
+    let parentDisable = this.disable;
+    this.disable = function() {
+      parentDisable.call(this);
+      clearTimeout(timerId);
+    };
+  };
+  
+  //let coffeeMachine1 = new CoffeeMachine(10000);
+  //coffeeMachine1.run(); // ошибка, кофеварка выключена!
+  
+  //let coffeeMachine2 = new CoffeeMachine(10000);
+  //coffeeMachine2.enable();
+  //coffeeMachine2.run(); // ...Кофе готов!
+  
+  let coffeeMachine3 = new CoffeeMachine(10000);
+  coffeeMachine3.enable();
+  coffeeMachine3.run();
+  coffeeMachine3.disable(); // остановит работу, ничего не выведет
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+  
+   /**
+  * Creates function-decorator throttle that runs given
+  * function not often than once in ms time
+  * @param{function} function "f"
+  * @param{number} ms to delay f() for
+  * @returns{function} function-decorator throttle
+  */
+  //решение из учебника
+  function throttleBook(func, ms) {
+    
+      var isThrottled = false,
+        savedArgs,
+        savedThis;
+    
+      function wrapper() {
+    
+        if (isThrottled) {
+          savedArgs = arguments;
+          savedThis = this;
+          return;
+        }
+    
+        func.apply(this, arguments);
+    
+        isThrottled = true;
+    
+        setTimeout(function() {
+          isThrottled = false;
+          if (savedArgs) {
+            wrapper.apply(savedThis, savedArgs);
+            savedArgs = savedThis = null;
+          }
+        }, ms);
+      }
+      return wrapper;
+    };
+    
+  //моё решение  
+  function throttle(f, ms) {
+    let run = true,
+        timerId,
+        workDoneTime,
+        currentRunTime,
+        firstCall = true;
+    
+    return function() {
+      let self = this,
+          args = arguments;
+          
+      function callFunc() {
+        f.apply(self, args);
+        run = true;
+        workDoneTime = Date.now();
+      };
+        
+      if (firstCall) { //первый вызов, без задержки
+        run = false;
+        firstCall = false;
+        f.apply(this, arguments);
+        setTimeout(function() {
+          run = true;
+          workDoneTime = Date.now(); //закончил работу, фиксируем время
+        }, ms);
+        
+      } else if ( run && !firstCall ) { //второй вызов и все вызовы, идущие 
+        run = false;                    //после сработавшего
+        currentRunTime = Date.now(); //время старта функции
+        timerId = setTimeout(callFunc, ms - (currentRunTime - workDoneTime) );
+        
+      } else { //предыдущие вызовы еще работают
+        clearTimeout(timerId);
+        currentRunTime = Date.now(); //время старта функции
+        timerId = setTimeout(callFunc, ms - (currentRunTime - workDoneTime) );
+      };
+    };
+  };
+  
+  
+  //benchmarking
+  function foo() {
+    Math.random();
+  };
+  
+  let f0 = throttle(foo, 0),
+      f1 = throttleBook(foo, 0),
+      i = 0,
+      averageTime = 0;
+  
+  
+  function benchmark(func) {
+    let stop,
+        counter = 0,
+        start = performance.now();
+    
+    while (counter < 100000) {
+      func();
+      counter++;
+    };
+    stop = performance.now();
+    
+    console.log("Всего мс: " + (stop - start));
+    return (stop - start);
+  };
+  
+  //мой throttle
+  while (i < 10) {
+    averageTime += benchmark(f0);
+    i++;
+  }
+  console.log("Всего среднее время (мой throttle): " + averageTime / 10);
+  
+  averageTime = 0;
+  i = 0;
+  
+  //throttle из учебника
+  while (i < 10) {
+    averageTime += benchmark(f1);
+    i++;
+  }
+  console.log("Всего среднее время (учебник): " + averageTime / 10);
+  </script>
+
+</body>
+</html>
