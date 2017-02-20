@@ -1,0 +1,45 @@
+<script>
+"use strict";
+
+var head = {
+  glasses: 1
+};
+
+var table = {
+  pen: 3,
+  __proto__: head
+};
+
+var bed = {
+  sheet: 1,
+  pillow: 2,
+  __proto__: table
+};
+
+var pockets = {
+  money: 2000,
+  __proto__: bed
+};
+
+console.log(pockets.pen); //3
+console.log(bed.glasses); //1
+console.log(table.money); //undefined
+
+function test(link) {
+  let start = performance.now(),
+      i = 0;
+  
+  while (i < 100000) {
+    link;
+    i++;
+  };
+  let end = performance.now();
+  
+  console.log(end - start);
+};
+
+test(pockets.glasses); //медленнее
+test(head.glasses); //быстрее
+
+
+</script>
