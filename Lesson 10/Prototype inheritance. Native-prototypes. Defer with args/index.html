@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://js.cx/test/libs.js"></script>
+  <script src="test.js"></script>
+</head>
+<body>
+
+  <script>
+  "use strict";
+
+  Function.prototype.defer = function(ms) {
+    let self = this;
+    return function(...rest) {
+      setTimeout(self.bind(this, ...rest), ms);
+    };
+  };
+  
+  </script>
+
+</body>
+</html>
