@@ -3,25 +3,26 @@
 
 <head>
   <meta charset="utf-8">
-  <script src="closest.js"></script>
+  <script src="textContent.js"></script>
 </head>
 
 <body>
-  <ul>
-    <li class="chapter">Глава I
-      <ul>
-        <li class="subchapter">Глава <span class="num">1.1</span></li>
-        <li class="subchapter">Глава <span class="num">1.2</span></li>
-      </ul>
-    </li>
-  </ul>
+  <div>
+    <h1>Срочно в номер!</h1>
+    <p>Марсиане атакуют людей!</p>
+    <p>Марсиане атакуют<b> людей</b>!</p>
+  </div>
 
   <script>
   "use strict";
   
   Element.prototype.textContentPoli = window.textContentPoli;
-    
+  let news = document.body.children[0];
+
+  // \n  Срочно в номер!\n  Марсиане атакуют людей!\n
+  console.log( news.textContent );
   
+  document.body.children[0].textContent = "<b>Винни-пух</b>";
   </script>
 
 </body>
