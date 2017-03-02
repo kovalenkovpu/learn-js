@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <div>Это</div>
+  <div>Элементы</div>
+
+  <script>
+    let elem = document.createElement('div');
+    elem.innerHTML = '<b>Новый элемент</b>';
+  
+    function insertAfter(elem, refElem) {
+      console.log(refElem.nextSibling);
+      console.log(refElem.parentNode);
+      return refElem.parentNode.insertBefore(elem, refElem.nextSibling);
+    }
+  
+    let body = document.body;
+  
+    // вставить elem после первого элемента
+    console.log(body.firstChild);
+    insertAfter(elem, body.firstChild); // <--- должно работать
+  
+    // вставить elem за последним элементом
+    insertAfter(elem, body.lastChild); // <--- должно работать
+  </script>
+</body>
+
+</html>

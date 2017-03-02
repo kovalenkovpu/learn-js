@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <table id="table">
+    <tr>
+      <td>Это</td>
+      <td>Все</td>
+      <td>Элементы DOM</td>
+    </tr>
+  </table>
+
+  <ol id="ol">
+    <li>Вася</li>
+    <li>Петя</li>
+    <li>Маша</li>
+    <li>Даша</li>
+  </ol>
+
+  <script>
+    function removeChildren(elem) {
+      let children = elem.children,
+          lngth = children.length;
+            
+      for (let i = 0; i < lngth; i++) {
+        console.log(children[0]);
+        elem.removeChild(children[0]);
+      }
+    };
+  
+    //removeChildren(table); // очищает таблицу
+    removeChildren(ol); // очищает список
+  </script>
+</body>
+</html>
