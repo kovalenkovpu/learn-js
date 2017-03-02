@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+
+  <style>
+    .external {
+      background-color: yellow
+    }
+  </style>
+  
+  <a name="list">список</a>
+  <ul>
+    <li><a href="http://google.com">http://google.com</a></li>
+    <li><a href="/tutorial">/tutorial.html</a></li>
+    <li><a href="local/path">local/path</a></li>
+    <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+    <li><a href="http://nodejs.org">http://nodejs.org</a></li>
+    <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+  </ul>
+
+  <script>
+  "use strict";
+  
+  let hrefs = document.querySelectorAll("a");
+  console.log(hrefs);
+  console.log(hrefs.length);
+  
+  for (let i = 0; i < hrefs.length; i++) {
+    let hr = hrefs[i].href;
+    console.log(hr);
+    
+    if (hr.slice(0, 7) == "http://" && hr.slice(7, 15) != "internal" ) {
+      hrefs[i].className = "external";
+    }
+  };
+  </script>
+
+</body>
+
+</html>
