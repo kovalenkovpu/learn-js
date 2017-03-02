@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Создание списка!</h1>
+
+  <script>
+    "use strict";
+    let run = true,
+        parent,
+        elem = "S!";
+    
+    while (elem != null || elem != "") {
+      elem = "";
+      elem = prompt("Введите очередной элемент списка");
+      
+      if (run === true) {
+        let ul = document.createElement("ul");
+        ul.className = "list";
+        document.body.insertBefore(ul, document.body.querySelector("script"));
+        parent = document.body.querySelector(".list");
+        run = false;
+      };      
+      
+      if (elem == null || elem == "") {
+        break;
+      } else {
+        let li = document.createElement("li");
+        
+        li.textContent = elem;
+        parent.appendChild(li);
+      };
+    };
+    
+    
+  </script>
+</body>
+</html>
