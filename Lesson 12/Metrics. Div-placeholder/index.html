@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+    #moving-div {
+      border: 5px groove green;
+      background-color: yellow;
+      padding: 5px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  Before Before Before
+
+  <div id="moving-div">
+    Text Text Text
+    <br> Text Text Text
+    <br>
+  </div>
+
+  After After After
+
+  <script>
+    let div = document.getElementById('moving-div');
+    let shadowDiv = document.createElement("div");
+    
+    shadowDiv.style.backgroundColor = "grey";
+    
+    shadowDiv.style.width = div.clientWidth + "px";
+    shadowDiv.style.height = div.clientHeight + "px";
+    
+    shadowDiv.style.margin = getComputedStyle(div).margin;
+    shadowDiv.style.padding = getComputedStyle(div).padding;
+    shadowDiv.style.borderWidth = getComputedStyle(div).borderWidth;
+    
+    
+    document.body.insertBefore(shadowDiv, div);
+
+    div.style.position = 'absolute';
+    div.style.right = div.style.top = 0;
+  </script>
+
+</body>
+
+</html>
