@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #elem {
+      width: 200px;
+      height: 150px;
+      background-color: red;
+      padding: 20px;
+      overflow: auto;
+    }
+
+    body {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="elem">
+    текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст текст
+  </div>
+
+  <script>
+    "use strict";
+    
+    let elem = document.getElementById("elem"),
+        body = document.body;
+
+    let bodyWidth = body.clientWidth,
+        bodyBorder = body.offsetWidth - body.clientWidth,
+        elScrollBord = elem.offsetWidth - elem.clientWidth,
+        elPadding = parseInt(getComputedStyle(elem).padding);
+        
+    elem.style.width = bodyWidth - bodyBorder - elScrollBord - elPadding + "px";
+
+  </script>
+
+
+</body>
+
+</html>

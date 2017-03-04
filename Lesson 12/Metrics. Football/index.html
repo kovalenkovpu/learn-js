@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+    #field {
+      width: 200px;
+      border: 10px groove black;
+      background-color: #00FF00;
+      position: relative;
+    }
+
+    #ball {
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div id="field">
+    <img src="https://js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+  
+  <script>
+    "use strict";
+    let field = document.getElementById("field"),
+        ball = document.getElementById("ball");
+    
+    let fieldWidth = field.clientWidth,
+        fieldHeight = field.clientHeight,
+        ballWidth = ball.offsetWidth,
+        ballHeight = ball.offsetWidth;
+    
+    /**
+     * Removes the ball in teh centre of a field
+     * @param {}
+     * @returns {}
+     */
+    function reposition() {
+      let leftPosition = (fieldWidth / 2) - (ballWidth / 2),
+          topPosition = (fieldHeight / 2) - (ballHeight / 2);
+    
+      ball.style.marginLeft = leftPosition + "px";
+      ball.style.marginTop = topPosition + "px";
+    };
+    
+    let start = performance.now();
+    //опрашиваем размер изображения, ждем пока подгрузится
+    let timerId = setInterval(() => {
+      ballWidth = ball.offsetWidth;
+      ballHeight = ball.offsetWidth;
+      
+      if (ballWidth && ballHeight) {
+        reposition();
+        let stop = performance.now();
+        console.log(stop - start);
+        clearInterval(timerId);
+      };
+    }, 10);
+    
+  </script>
+
+
+</body>
+
+</html>
