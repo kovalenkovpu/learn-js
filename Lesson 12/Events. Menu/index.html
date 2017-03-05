@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <span class="menu">
+    <span class="menu__right-arrow">▶</span>
+    <span class="menu__down-arrow" hidden>▼ </span>Сладости (нажми меня)!
+  
+    <ul class="menu__dropdown" hidden>
+      <li>Торт</li>
+      <li>Пончик</li>
+      <li>Пирожное</li>
+    </ul>
+  
+  </span>
+
+  <script>
+    "use strict";
+    
+    let rightArrow = document.querySelector(".menu__right-arrow"),
+        downArrow = document.querySelector(".menu__down-arrow"),
+        dropdown = document.querySelector(".menu__dropdown"),
+        menu = document.querySelector(".menu");
+    
+    let shown = false;
+    
+    function showMenu() {
+      shown = true;
+      dropdown.style.display = "inline";
+      rightArrow.style.display = "none";
+      downArrow.style.display = "inline";
+      return shown;
+    };
+    
+    function hideMenu() {
+      shown = false;
+      dropdown.style.display = "none";
+      rightArrow.style.display = "inline";
+      downArrow.style.display = "none";
+      return shown;
+    };
+    
+    menu.addEventListener("click", function() {
+      console.log(shown);
+      (shown) ? hideMenu() : showMenu();
+    });
+    
+  </script>
+</body>
+
+</html>

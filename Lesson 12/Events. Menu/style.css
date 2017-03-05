@@ -1,0 +1,16 @@
+.menu {
+  cursor: pointer;
+}
+
+.menu__right-arrow,
+.menu__down-arrow {
+  color: green;
+}
+
+.menu__dropdown {
+  display: none;
+}
+
+.menu__down-arrow {
+  display: none;
+}
