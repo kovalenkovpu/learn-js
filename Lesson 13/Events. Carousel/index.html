@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ваша верстка виджета, ваши стили -->
+  
+  <div class="slider">
+    <button class="arrow arrow--left">⇦</button>
+    
+    <ul>
+      <li><img src="https://js.cx/carousel/1.png"></li>
+      <li><img src="https://js.cx/carousel/2.png"></li>
+      <li><img src="https://js.cx/carousel/3.png"></li>
+      <li><img src="https://js.cx/carousel/4.png"></li>
+      <li><img src="https://js.cx/carousel/5.png"></li>
+      <li><img src="https://js.cx/carousel/6.png"></li>
+      <li><img src="https://js.cx/carousel/7.png"></li>
+      <li><img src="https://js.cx/carousel/8.png"></li>
+      <li><img src="https://js.cx/carousel/9.png"></li>
+      <li><img src="https://js.cx/carousel/10.png"></li>
+    </ul>
+    
+    <button class="arrow arrow--right">⇨</button>
+  </div>
+  
+  <script src="carousel.js"></script>
+  
+  <script>
+    "use strict";
+    //импорт
+    let Carousel = window.Carousel;
+  
+    let slider = document.querySelector(".slider");
+  
+    new Carousel(slider);
+    
+    //Закомментирован вариант решения без модуля
+    
+    /*
+    let lis = document.getElementsByTagName('li'),
+        left = document.querySelector(".arrow--left"),
+        right = document.querySelector(".arrow--right");
+    
+    function showPrevious() {
+      for (let i = 0; i < lis.length; i++) {
+        if (getComputedStyle(lis[i]).display !== "none" && i !== 0) {
+          lis[i - 1].style.display = "inline-block";
+          lis[i + 2].style.display = "none";
+          break;
+        }
+      };
+    };
+    
+    function showNext() {
+      for (let i = (lis.length - 1); i >= 0 ; i--) {
+        if (getComputedStyle(lis[i]).display !== "none" && i !== (lis.length - 1)) {
+          lis[i + 1].style.display = "inline-block";
+          lis[i - 2].style.display = "none";
+          break;
+        }
+      }
+    };
+    
+    //убираем лишние элементы из видимости
+    for (let i = 3; i < lis.length; i++) {
+      lis[i].style.display = "none";
+    };
+    
+    left.addEventListener("click", function() {
+      showPrevious();
+    });
+    
+    right.addEventListener("click", function() {
+      showNext();
+    });
+    */
+    
+  </script>
+
+  <script>
+    "use strict";
+    
+  </script>
+</body>
+
+</html>

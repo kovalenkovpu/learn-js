@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #field {
+      width: 200px;
+      height: 150px;
+      border: 10px groove black;
+      background-color: #00FF00;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    #ball {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -20px;
+      margin-top: -20px;
+      transition: 0.5s ease-in-out;
+    }
+  </style>
+</head>
+
+<body style="height:2000px">
+
+  Кликните на любое место поля, чтобы мяч перелетел туда.
+  <br> Мяч никогда не вылетит за границы поля.
+
+
+  <div id="field">
+    <img src="https://js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+
+  <script>
+    "use strict";
+    
+    class Field {
+      constructor(el) {
+        this.field = el;
+        this.ball = document.getElementById("ball");
+        
+        this.marginTop = parseInt(getComputedStyle(document.body).marginTop);
+        this.marginLeft = parseInt(getComputedStyle(document.body).marginLeft);
+        
+        this.fieldSize = this._getElemSize(this.field);
+        this.ballSize = this._getElemSize(this.ball);
+        
+        this.moveBall();
+      }
+      
+      /**
+       * Получение размеров DOM элемента
+       * @param {DOM object} объект DOM
+       * @returns {{X: number, Y: number, width: number, height: number}}
+       * Расстояние до левого края и до верхнего края элемента,
+       * Ширина и высота элемента
+       */
+      _getElemSize(elem) {
+        let x = elem.getBoundingClientRect().left,
+            y = elem.getBoundingClientRect().top,
+            width = parseInt(elem.offsetWidth),
+            height = parseInt(elem.offsetHeight);
+        
+        return {
+          X: x,
+          Y: y,
+          Width: width,
+          Height: height
+        };
+      }
+      
+      /**
+       * Получение новых координат мяча
+       * @param {{X: number, Y: number}} объект координат clientX & clientY
+       * @returns {{X: number, Y: number}} новые коррдинаты мяча
+       */
+      _getNewCoords(clientCoords) {
+        let newX = clientCoords.X - this.fieldSize.X - this.ballSize.Width/2 + this.marginLeft,
+            newY = clientCoords.Y - this.fieldSize.Y - this.ballSize.Height/2 + this.marginTop;
+        
+        //мяч выходит за левый край и за верхний
+        if (newX < this.ballSize.Width/2) {
+          newX = this.ballSize.Width/2;
+        }
+        
+        if (newY < this.ballSize.Height/2) {
+          newY = this.ballSize.Height/2;
+        }
+        
+        //мяч выходит за правый край и за нижний
+        if (newX > (this.fieldSize.Width - this.ballSize.Width)) {
+          newX = this.fieldSize.Width - this.ballSize.Width;
+        }
+        
+        if (newY > (this.fieldSize.Height - this.ballSize.Height)) {
+          newY = this.fieldSize.Height - this.ballSize.Height;
+        }
+        
+        return {
+          X: newX,
+          Y: newY
+        };
+      }
+      
+      /**
+       * Получение текущих координат курсора
+       * @param {TouchEvent} onclick событие
+       * @returns {{X: number, Y: number}}
+       */
+      _getClientXY(event) {
+        return {
+          X: event.clientX,
+          Y: event.clientY
+        };
+      }
+      
+      /**
+       * Движение мяча
+       */
+      moveBall() {
+        this.field.addEventListener("click", (event) => {
+          let clientCoords = this._getClientXY(event),
+              newXY = this._getNewCoords(clientCoords);
+        
+          this.ball.style.left = newXY.X  + "px";
+          this.ball.style.top = newXY.Y + "px";
+        });
+      }
+    }
+    
+    //даем загрузиться DOM и всем элементам на странице
+    window.onload = function() {
+      let field = new Field(document.getElementById("field"));
+    };
+    
+    
+  </script>
+
+</body>
+
+</html>
