@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="messages.css">
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  Кнопка для удаления:
+  <button class="remove-button">[x]</button>
+
+  <div class="msg-panes">
+    <div class="pane">
+      <h3>Лошадь</h3>
+      <p>Домашняя лошадь — животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид дикой лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>
+    </div>
+    <div class="pane">
+      <h3>Осёл</h3>
+      <p>Домашний осёл или ишак — одомашненный подвид дикого осла, сыгравший важную историческую роль в развитии хозяйства и культуры человека. Все одомашненные ослы относятся к африканским ослам.</p>
+    </div>
+    <div class="pane">
+      <h3>Корова, а также пара слов о диком быке, о волах и о тёлках. </h3>
+      <p>Коро́ва — самка домашнего быка, одомашненного подвида дикого быка, парнокопытного жвачного животного семейства полорогих. Самцы вида называются быками, молодняк — телятами, кастрированные самцы — волами. Молодых (до первой стельности) самок называют
+        тёлками.
+      </p>
+    </div>
+  </div>
+  
+  
+  <script>
+    "use strict";
+    
+    let panes = document.body.querySelector(".msg-panes"),
+        messages = panes.querySelectorAll(".pane"),
+        btn = document.querySelector(".remove-button"),
+        btns = [];
+    
+    function appendBtn(parent, child) {
+      let childCopy = child.cloneNode(true);
+      childCopy.style.position = "absolute";
+      childCopy.style.top = "10px";
+      childCopy.style.right = "15px";
+      parent.appendChild(childCopy);
+      btns.push(childCopy);
+    };
+    
+    Array.prototype.forEach.call(messages, function(item) {
+      appendBtn(item, btn);
+    });
+    
+    //паттерн делегирования событий
+    panes.addEventListener("click", (event) => {
+      let target = event.target;
+      
+      if (target.className == "remove-button") {
+        let parent = target.parentNode;
+        
+        while (parent.className != "pane") {
+          parent = parent.parentNode;
+        }
+        console.log(parent);
+        parent.style.display = "none";
+      }
+    });
+    
+  </script>
+</body>
+
+</html>
