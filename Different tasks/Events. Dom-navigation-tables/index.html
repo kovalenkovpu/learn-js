@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    th {
+      cursor: pointer;
+    }
+
+    th:hover {
+      background: yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <table id="grid">
+    <thead>
+      <tr>
+        <th data-type="number">Возраст</th>
+        <th data-type="string">Имя</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>Вася</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Петя</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Женя</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Маша</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Илья</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    "use strict";
+    
+    /**
+     * Sorts array
+     * @param {array} [[DOM Obj], [DOM Obj], [DOM Obj], ..] - array to sort
+     * @returns {array} sorted array
+     */
+    function sortTable(arr) {
+      return arr.sort((a, b) => {
+        let aTd = +a.cells[0].textContent,
+            bTd = +b.cells[0].textContent;
+        
+        return aTd - bTd;
+      });
+    };
+    
+    /**
+     * Inserts DOM nodes after parent
+     * @param {array} parent - node element
+     * @param {array} nodesArr - array of DOM elements
+     */
+    function insertRows(parent, nodesArr) {
+      console.log(nodesArr);
+      nodesArr.forEach((el) => {
+        parent.appendChild(el);
+      });
+    };
+    
+    /**
+     * Deletes DOM nodes of the parent node
+     * @param {array} parent - node element
+     */
+    function deleteRows(parent) {
+      let j = parent.children.length;
+      
+      parent.innerHTML = "";
+    };
+    
+    function sortTableInfo(table) {
+      let rowsArr = [],
+          tBody = table.tBodies[0];
+    
+      for (let i = 0; i < tBody.children.length; i++) {
+        let clone = tBody.rows[i];
+        
+        rowsArr.push(clone.cloneNode(true));
+      }
+      
+      table.addEventListener("click", (event) => {
+        let target = event.target,
+            action = target.getAttribute("data-type");
+        
+        if (action == "number") {
+          deleteRows(tBody);
+          insertRows(tBody, sortTable(rowsArr));
+        } else {
+          /*TODO
+          [x] - сортировка текстовой информации*/
+          //rows.sort();
+        }
+      });
+    };
+    
+    let table = document.getElementById("grid");
+    
+    sortTableInfo(table);
+  </script>
+
+</body>
+
+</html>
